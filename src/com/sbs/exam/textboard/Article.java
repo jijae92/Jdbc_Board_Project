@@ -1,3 +1,5 @@
+package com.sbs.exam.textboard;
+
 public class Article {
     public int id;
     public String title;
