@@ -55,14 +55,8 @@ public class App {
 
     private int action(Connection conn, Scanner sc, String cmd) {
 
-        ArticleController articleController = new ArticleController();
-        articleController.setConn(conn);
-        articleController.setScanner(sc);
-
-
-        MemberController memberController = new MemberController();
-        memberController.setConn(conn);
-        memberController.setScanner(sc);
+        ArticleController articleController = new ArticleController(conn, sc);
+         MemberController memberController = new MemberController(conn, sc);
 
         if(cmd.equals("member join")){
             memberController.join(cmd);
