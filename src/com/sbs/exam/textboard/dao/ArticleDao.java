@@ -1,6 +1,6 @@
 package com.sbs.exam.textboard.dao;
 
-import com.sbs.exam.textboard.Article;
+import com.sbs.exam.textboard.dto.Article;
 import com.sbs.exam.textboard.util.DBUtil;
 import com.sbs.exam.textboard.util.SecSql;
 

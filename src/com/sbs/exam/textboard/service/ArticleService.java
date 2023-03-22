@@ -1,6 +1,6 @@
 package com.sbs.exam.textboard.service;
 
-import com.sbs.exam.textboard.Article;
+import com.sbs.exam.textboard.dto.Article;
 import com.sbs.exam.textboard.dao.ArticleDao;
 
 import java.sql.Connection;

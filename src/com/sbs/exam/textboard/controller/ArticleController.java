@@ -1,15 +1,10 @@
 package com.sbs.exam.textboard.controller;
 
-import com.sbs.exam.textboard.Article;
+import com.sbs.exam.textboard.dto.Article;
 import com.sbs.exam.textboard.service.ArticleService;
-import com.sbs.exam.textboard.service.MemberService;
-import com.sbs.exam.textboard.util.DBUtil;
-import com.sbs.exam.textboard.util.SecSql;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class ArticleController extends Controller{

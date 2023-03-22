@@ -1,6 +1,6 @@
 package com.sbs.exam.textboard.test;
 
-import com.sbs.exam.textboard.Article;
+import com.sbs.exam.textboard.dto.Article;
 
 import java.sql.*;
 import java.util.ArrayList;

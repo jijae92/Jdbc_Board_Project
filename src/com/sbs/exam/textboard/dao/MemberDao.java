@@ -1,9 +1,11 @@
 package com.sbs.exam.textboard.dao;
 
+import com.sbs.exam.textboard.dto.Member;
 import com.sbs.exam.textboard.util.DBUtil;
 import com.sbs.exam.textboard.util.SecSql;
 
 import java.sql.Connection;
+import java.util.Map;
 
 public class MemberDao {
     private Connection conn;
@@ -32,5 +34,19 @@ public class MemberDao {
 
         int id = DBUtil.insert(conn, sql);
         return id;
+    }
+
+    public Member getMemberByLoginId(String loginId) {
+        SecSql sql = new SecSql();
+        sql.append("SELECT *");
+        sql.append("FROM `member`");
+        sql.append("WHERE loginId = ? ", loginId);
+
+        Map<String, Object> memberMap = DBUtil.selectRow(conn, sql);
+
+        if(memberMap.isEmpty()) {
+            return null;
+        }
+        return new Member(memberMap);
     }
 }
