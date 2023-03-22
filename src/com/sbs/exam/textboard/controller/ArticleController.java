@@ -1,5 +1,6 @@
 package com.sbs.exam.textboard.controller;
 
+import com.sbs.exam.textboard.Container;
 import com.sbs.exam.textboard.dto.Article;
 import com.sbs.exam.textboard.service.ArticleService;
 
@@ -9,9 +10,8 @@ import java.util.Scanner;
 
 public class ArticleController extends Controller{
     private ArticleService articleService;
-    public ArticleController(Connection conn, Scanner sc) {
-        super(sc);
-        articleService= new ArticleService(conn);
+    public ArticleController() {
+        articleService= Container.articleService;
     }
 
     public void add(String cmd) {

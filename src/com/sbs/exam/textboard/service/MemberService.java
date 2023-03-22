@@ -1,5 +1,6 @@
 package com.sbs.exam.textboard.service;
 
+import com.sbs.exam.textboard.Container;
 import com.sbs.exam.textboard.dao.MemberDao;
 import com.sbs.exam.textboard.dto.Member;
 import com.sbs.exam.textboard.util.DBUtil;
@@ -9,8 +10,8 @@ import java.sql.Connection;
 
 public class MemberService {
     private MemberDao memberDao;
-    public MemberService(Connection conn) {
-        memberDao = new MemberDao(conn);
+    public MemberService() {
+        memberDao = Container.memberDao;
     }
 
     public boolean isLoginedDup(String loginId) {

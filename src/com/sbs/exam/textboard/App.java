@@ -1,21 +1,18 @@
 package com.sbs.exam.textboard;
 
-import com.sbs.exam.textboard.controller.ArticleController;
-import com.sbs.exam.textboard.controller.MemberController;
-import com.sbs.exam.textboard.util.DBUtil;
-import com.sbs.exam.textboard.util.SecSql;
-
 import java.sql.*;
 import java.util.*;
 
 public class App {
     public void run() {
-        Scanner sc = Container.scanner;
+        Container.scanner = new Scanner(System.in);
+
+        Container.init();
 
 
         while (true) {
             System.out.printf("명령어) ");
-            String cmd = sc.nextLine();
+            String cmd = Container.scanner.nextLine();
             cmd = cmd.trim();
 
             // DB 연걸시작
@@ -30,8 +27,9 @@ public class App {
             String url = "jdbc:mysql://127.0.0.1:3306/text_board?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull";
             try {
                 conn = DriverManager.getConnection(url, "jijae92", "tiger");
+                Container.conn = conn;
 
-                int actionResult = action(conn, sc, cmd);
+                int actionResult = action(cmd);
                 if(actionResult == -1){
                     break;
                 }
@@ -50,39 +48,37 @@ public class App {
             }
             // DB 연결 끝
         }
-        sc.close();
+        Container.scanner.close();
     }
 
-    private int action(Connection conn, Scanner sc, String cmd) {
+    private int action(String cmd) {
 
-        ArticleController articleController = new ArticleController(conn, sc);
-         MemberController memberController = new MemberController(conn, sc);
 
         if(cmd.equals("member join")){
-            memberController.join(cmd);
+            Container.memberController.join(cmd);
         }
         else if(cmd.equals("member login")){
-            memberController.login(cmd);
+            Container.memberController.login(cmd);
         }
 
         else if(cmd.equals("article add")) {
-            articleController.add(cmd);
+            Container.articleController.add(cmd);
 
         }
         else if(cmd.equals("article list")) {
 
-            articleController.showList(cmd);
+            Container.articleController.showList(cmd);
 
         }
         else if(cmd.startsWith("article detail ")){
-            articleController.showDetail(cmd);
+            Container.articleController.showDetail(cmd);
         }
         else if(cmd.startsWith("article modify ")){
-            articleController.modify(cmd);
+            Container.articleController.modify(cmd);
         }
 
         else if(cmd.startsWith("article delete ")){
-            articleController.delete(cmd);
+            Container.articleController.delete(cmd);
         }
 
 

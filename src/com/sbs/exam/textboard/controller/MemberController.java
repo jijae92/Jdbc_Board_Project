@@ -1,5 +1,6 @@
 package com.sbs.exam.textboard.controller;
 
+import com.sbs.exam.textboard.Container;
 import com.sbs.exam.textboard.dto.Member;
 import com.sbs.exam.textboard.service.MemberService;
 
@@ -10,9 +11,8 @@ public class MemberController extends Controller{
 
     private MemberService memberService;
 
-    public MemberController(Connection conn, Scanner sc){
-        super(sc);
-        memberService= new MemberService(conn);
+    public MemberController(){
+        memberService= Container.memberService;
 
     }
 
@@ -118,7 +118,7 @@ public class MemberController extends Controller{
             break;
         }
 
-        Member member = memberService.getMemberByLoginId(loginId)
+        Member member = memberService.getMemberByLoginId(loginId);
 
         int tryMaxCount = 3;
         int tryCount = 0;
@@ -144,10 +144,6 @@ public class MemberController extends Controller{
             System.out.printf("%s님 환영합니다.\n", member.name);
             break;
         }
-
-
-
-
 
     }
 }
