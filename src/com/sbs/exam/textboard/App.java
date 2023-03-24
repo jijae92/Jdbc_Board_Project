@@ -60,7 +60,9 @@ public class App {
         else if(cmd.equals("member login")){
             Container.memberController.login(cmd);
         }
-
+        else if(cmd.equals("member whoami")){
+            Container.memberController.whoami(cmd);
+        }
         else if(cmd.equals("article add")) {
             Container.articleController.add(cmd);
 

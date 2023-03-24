@@ -15,7 +15,7 @@ public class ArticleController extends Controller{
     }
 
     public void add(String cmd) {
-
+//        if(Container.session.isLogined())
         System.out.println("== 게시물 생성 ==");
 
         System.out.printf("제목 : ");
