@@ -10,7 +10,17 @@ public class Session {
         loginedMemberId = -1;
     }
 
-//    public boolean isLogined() {
-//        return loginedMemberId;
-//    }
+    public boolean isLogined() {
+        return loginedMemberId != -1;
+    }
+
+    public void logout() {
+        loginedMemberId = -1;
+        loginedMember = null;
+    }
+    public void login(Member member) {
+        loginedMemberId = member.id;
+        loginedMember = member;
+    }
+
 }
