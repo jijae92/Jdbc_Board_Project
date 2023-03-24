@@ -71,8 +71,10 @@ public class ArticleDao {
 
     public List<Article> getAticles() {
         SecSql sql = new SecSql();
-        sql.append("SELECT *");
-        sql.append(" FROM article");
+        sql.append("SELECT A.*, M.name As extra__writerName");
+        sql.append(" FROM article AS A");
+        sql.append(" INNER JOIN member AS M");
+        sql.append(" ON A.memberId = M.id");
         sql.append(" ORDER BY id DESC;");
 
         List<Map<String, Object>> articleListMap = DBUtil.selectRows(Container.conn, sql);
